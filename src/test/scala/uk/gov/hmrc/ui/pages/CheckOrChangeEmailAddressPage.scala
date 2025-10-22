@@ -48,10 +48,6 @@ object CheckOrChangeEmailAddressPage extends BasePage {
       case "valid"     => getText(radio).contains(validEmail)
     }
   }
-  //
-  //  def differentEmailAddress(): Unit = {
-  //    val different: By = By.xpath("//*[@id=\"main-content\"]/div/div/div[1]/form/div/fieldset/div/div[1]/label")
-  //  }
 
   def selectDifferentEmailAddress(): Unit = {
     val different: By = By.xpath("//*[@id=\"main-content\"]/div/div/div[1]/form/div/fieldset/div/div[1]/label")

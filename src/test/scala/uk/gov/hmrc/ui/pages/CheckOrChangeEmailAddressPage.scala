@@ -118,7 +118,7 @@ object CheckOrChangeEmailAddressPage extends BasePage {
     )
 
   def clickSignOut(): Unit = {
-    val signOut: By = By.cssSelector("body > header > div > div > div.govuk-header__content > nav > a")
+    val signOut: By = By.cssSelector("body > header > div > div > nav > a")
     click(signOut)
   }
 

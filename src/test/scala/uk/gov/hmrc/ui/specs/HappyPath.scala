@@ -24,7 +24,7 @@ class HappyPath extends BaseSpec {
 
   Feature("Happy Path") {
 
-    Scenario("Organisation - BTA - User is directed to Check or change you email address page", allTests) {
+    Scenario("Organisation - BTA - EPAYE - User is directed to Check or change you email address page", allTests) {
 
       Given("user is on Test only starter page")
       TestOnlyStartPage.goTo()
@@ -45,7 +45,31 @@ class HappyPath extends BaseSpec {
       CheckOrChangeEmailAddressPage.emailAddressDisplayedAsRadio("testEmail")
     }
 
-    Scenario("Organisation - EPAYE - User is directed to Check or change you email address page", allTests) {
+    Scenario("Organisation - BTA - CCL - User is directed to Check or change you email address page", allTests) {
+
+      Given("user is on Test only starter page")
+      TestOnlyStartPage.goTo()
+
+      When("user signs in and starts a journey")
+      TestOnlyStartPage.selectUserType("Organisation")
+      TestOnlyStartPage.selectOrigin("BTA")
+      TestOnlyStartPage.selectRegime("ccl")
+      TestOnlyStartPage.enterEmailAddress("testEmail")
+      TestOnlyStartPage.selectEmailBouncedYes()
+      TestOnlyStartPage.clickStartNow()
+
+      When("The user is on the Check or Change Email Address Page")
+      CheckOrChangeEmailAddressPage.pageLoaded()
+      CheckOrChangeEmailAddressPage.emailAddressDisplayed("testEmail")
+
+      Then("The email address is displayed in the radio buttons text")
+      CheckOrChangeEmailAddressPage.emailAddressDisplayedAsRadio("testEmail")
+    }
+
+    Scenario(
+      "Organisation - EPAYE service - EPAYE - - User is directed to Check or change you email address page",
+      allTests
+    ) {
 
       Given("user is on Test only starter page")
       TestOnlyStartPage.goTo()
@@ -66,7 +90,7 @@ class HappyPath extends BaseSpec {
       CheckOrChangeEmailAddressPage.emailAddressDisplayedAsRadio("testEmail")
     }
 
-    Scenario("Individual - BTA - User is directed to Check or change you email address page", allTests) {
+    Scenario("Individual - BTA - EPAYE - User is directed to Check or change you email address page", allTests) {
 
       Given("user is on Test only starter page")
       TestOnlyStartPage.goTo()
@@ -87,7 +111,10 @@ class HappyPath extends BaseSpec {
       CheckOrChangeEmailAddressPage.emailAddressDisplayedAsRadio("testEmail")
     }
 
-    Scenario("Individual - EPAYE - User is directed to Check or change you email address page", allTests) {
+    Scenario(
+      "Individual - EPAYE service - EPAYE - User is directed to Check or change you email address page",
+      allTests
+    ) {
 
       Given("user is on Test only starter page")
       TestOnlyStartPage.goTo()
@@ -129,7 +156,7 @@ class HappyPath extends BaseSpec {
       TestOnlyStartPage.testOnlyBackPage()
     }
 
-    Scenario("Organisation - BTA - User selects different email that is already confirmed", allTests) {
+    Scenario("Organisation - BTA - EPAYE - User selects different email that is already confirmed", allTests) {
 
       Given("user is on Test only starter page")
       TestOnlyStartPage.goTo()
@@ -167,7 +194,10 @@ class HappyPath extends BaseSpec {
       EnterCodeToConfirmPage.emailVerifiedPageLoaded()
     }
 
-    Scenario("Organisation - EPAYE - User selects different email that is already confirmed", allTests) {
+    Scenario(
+      "Organisation - EPAYE service - EPAYE - User selects different email that is already confirmed",
+      allTests
+    ) {
 
       Given("user is on Test only starter page")
       TestOnlyStartPage.goTo()
@@ -205,7 +235,7 @@ class HappyPath extends BaseSpec {
       EnterCodeToConfirmPage.emailVerifiedPageLoaded()
     }
 
-    Scenario("Individual - BTA - User selects different email that is already confirmed", allTests) {
+    Scenario("Individual - BTA - EPAYE - User selects different email that is already confirmed", allTests) {
 
       Given("user is on Test only starter page")
       TestOnlyStartPage.goTo()
@@ -243,7 +273,7 @@ class HappyPath extends BaseSpec {
       EnterCodeToConfirmPage.emailVerifiedPageLoaded()
     }
 
-    Scenario("Individual - EPAYE - User selects different email that is already confirmed", allTests) {
+    Scenario("Individual - EPAYE service - EPAYE - User selects different email that is already confirmed", allTests) {
 
       Given("user is on Test only starter page")
       TestOnlyStartPage.goTo()
@@ -281,7 +311,7 @@ class HappyPath extends BaseSpec {
       EnterCodeToConfirmPage.emailVerifiedPageLoaded()
     }
 
-    Scenario("Organisation - BTA - User selects Stored email that is already confirmed", allTests) {
+    Scenario("Organisation - BTA - EPAYE - User selects Stored email that is already confirmed", allTests) {
 
       Given("user is on Test only starter page")
       TestOnlyStartPage.goTo()
@@ -317,7 +347,7 @@ class HappyPath extends BaseSpec {
       EnterCodeToConfirmPage.emailVerifiedPageLoaded()
     }
 
-    Scenario("Organisation - EPAYE - User selects Stored email that is already confirmed", allTests) {
+    Scenario("Organisation - EPAYE service - EPAYE - User selects Stored email that is already confirmed", allTests) {
 
       Given("user is on Test only starter page")
       TestOnlyStartPage.goTo()
@@ -353,7 +383,7 @@ class HappyPath extends BaseSpec {
       EnterCodeToConfirmPage.emailVerifiedPageLoaded()
     }
 
-    Scenario("Individual - BTA - User selects Stored email that is already confirmed", allTests) {
+    Scenario("Individual - BTA - EPAYE - User selects Stored email that is already confirmed", allTests) {
 
       Given("user is on Test only starter page")
       TestOnlyStartPage.goTo()
@@ -389,7 +419,7 @@ class HappyPath extends BaseSpec {
       EnterCodeToConfirmPage.emailVerifiedPageLoaded()
     }
 
-    Scenario("Individual - EPAYE - User selects Stored email that is already confirmed", allTests) {
+    Scenario("Individual - EPAYE service - EPAYE - User selects Stored email that is already confirmed", allTests) {
 
       Given("user is on Test only starter page")
       TestOnlyStartPage.goTo()
@@ -468,5 +498,6 @@ class HappyPath extends BaseSpec {
       Then("The user is presented with the Email address verified page")
       EnterCodeToConfirmPage.emailVerifiedPageLoaded()
     }
+
   }
 }

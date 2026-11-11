@@ -59,6 +59,7 @@ object TestOnlyStartPage extends BasePage {
       case "cds"  => selectCDS()
       case "ppt"  => selectPPT()
       case "paye" => selectPAYE()
+      case "ccl"  => selectCCL()
       case other  => throw new Exception(s"Unexpected option: $other")
     }
 
@@ -119,6 +120,11 @@ object TestOnlyStartPage extends BasePage {
   def selectPAYE(): Unit = {
     val paye: By = By.id("taxRegime-5")
     selectCheckbox(paye)
+  }
+
+  def selectCCL(): Unit = {
+    val ccl: By = By.id("taxRegime-6")
+    selectCheckbox(ccl)
   }
 
   def enterEmailAddress(email: String): Unit = {
